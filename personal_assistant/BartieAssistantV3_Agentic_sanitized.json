@@ -1,0 +1,1876 @@
+{
+  "name": "BartieAssistantV3 | Agentic",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {
+          "messageStatusUpdates": []
+        }
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        -592,
+        -352
+      ],
+      "id": "c14494ff-d68d-4963-a599-d02f88514a06",
+      "name": "WhatsApp Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "<GOOGLE_SHEET_ID>",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "IncomingMessages",
+          "cachedResultUrl": "<GOOGLE_SHEET_URL>"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_timestamp": "={{ $json.processed_at }}",
+            "messaging_product": "={{ $json.messaging_product }}",
+            "from_name": "={{ $json.from_name }}",
+            "message_id": "={{ $json.id }}: {{ $now }}",
+            "message_body": "={{ $json.message_body_text }}",
+            "message_type": "={{ $json.message_type }}",
+            "message_to": "={{ $json.to_address }}",
+            "message_from": "={{ $json.from_address }}",
+            "message_length": "={{ $json.message_length }}",
+            "message_thread": "={{ $json.message_thread }}"
+          },
+          "matchingColumns": [
+            "message_id"
+          ],
+          "schema": [
+            {
+              "id": "message_timestamp",
+              "displayName": "message_timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "messaging_product",
+              "displayName": "messaging_product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "from_name",
+              "displayName": "from_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_id",
+              "displayName": "message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_body",
+              "displayName": "message_body",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_type",
+              "displayName": "message_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_to",
+              "displayName": "message_to",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_from",
+              "displayName": "message_from",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_length",
+              "displayName": "message_length",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_thread",
+              "displayName": "message_thread",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "execution_id",
+              "displayName": "execution_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "model_used",
+              "displayName": "model_used",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "input_tokens",
+              "displayName": "input_tokens",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "output_tokens",
+              "displayName": "output_tokens",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "total_tokens",
+              "displayName": "total_tokens",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "summary",
+              "displayName": "summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "key_points",
+              "displayName": "key_points",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "actions_for_user",
+              "displayName": "actions_for_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "important_links",
+              "displayName": "important_links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_domain",
+              "displayName": "message_domain",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "is_event",
+              "displayName": "is_event",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "is_calendar",
+              "displayName": "is_calendar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "is_follow_up",
+              "displayName": "is_follow_up",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "needs_stronger_model",
+              "displayName": "needs_stronger_model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "missing_data_skip",
+              "displayName": "missing_data_skip",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "thread_id",
+              "displayName": "thread_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "conversation_route",
+              "displayName": "conversation_route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_kind",
+              "displayName": "message_kind",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "escalation_reason",
+              "displayName": "escalation_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "token_friendly_message",
+              "displayName": "token_friendly_message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proposed_follow_up_question",
+              "displayName": "proposed_follow_up_question",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proposed_next_step",
+              "displayName": "proposed_next_step",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "operation",
+              "displayName": "operation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "data_source",
+              "displayName": "data_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_profile",
+              "displayName": "calendar_profile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_time_scope",
+              "displayName": "calendar_time_scope",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_date_range",
+              "displayName": "calendar_date_range",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_topic",
+              "displayName": "calendar_topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "gmail_search_needed",
+              "displayName": "gmail_search_needed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "gmail_query_string",
+              "displayName": "gmail_query_string",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "gmail_direction",
+              "displayName": "gmail_direction",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_action",
+              "displayName": "event_action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_missing_info",
+              "displayName": "calendar_missing_info",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_target_calendar",
+              "displayName": "event_target_calendar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_payload",
+              "displayName": "event_payload",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "requires_confirmation",
+              "displayName": "requires_confirmation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "raw_text",
+              "displayName": "raw_text",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -256,
+        -352
+      ],
+      "id": "4dc8b40e-fb51-4d88-8795-f5007901240f",
+      "name": "Log  Incoming Message"
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputItems = $input.all();\n\n// Normalize the root input\nlet root;\nif (inputItems.length === 1) {\n  root = inputItems[0].json;\n} else {\n  root = inputItems.map(item => item.json);\n}\n\nconst records = Array.isArray(root) ? root : [root];\n\n// Helper to strip \"Header-Name:\" prefixes from header values (Gmail)\nfunction cleanHeader(value) {\n  if (!value || typeof value !== 'string') return '';\n  return value.replace(/^[^:]+:\\s*/i, '').trim();\n}\n\n// Simple HTML to text converter (for Gmail)\nfunction htmlToText(html) {\n  if (!html || typeof html !== 'string') return '';\n\n  let text = html;\n\n  // Remove style, script, noscript blocks\n  text = text.replace(/<style[^>]*>[\\s\\S]*?<\\/style>/gi, '');\n  text = text.replace(/<script[^>]*>[\\s\\S]*?<\\/script>/gi, '');\n  text = text.replace(/<noscript[^>]*>[\\s\\S]*?<\\/noscript>/gi, '');\n\n  // Convert some block level tags to newlines\n  text = text.replace(/<(br|\\/p|\\/div|\\/tr|\\/li)\\b[^>]*>/gi, '\\n');\n\n  // Strip remaining tags\n  text = text.replace(/<[^>]+>/g, '');\n\n  // Decode a few common HTML entities\n  const entities = {\n    '&nbsp;': ' ',\n    '&amp;': '&',\n    '&lt;': '<',\n    '&gt;': '>',\n    '&quot;': '\"',\n    '&#39;': \"'\",\n  };\n  for (const [entity, char] of Object.entries(entities)) {\n    const re = new RegExp(entity, 'g');\n    text = text.replace(re, char);\n  }\n\n  // Normalize whitespace\n  text = text.replace(/\\r/g, '');\n  text = text.replace(/\\t/g, ' ');\n  text = text.replace(/ +/g, ' ');\n  text = text.replace(/\\n{3,}/g, '\\n\\n');\n\n  return text.trim();\n}\n\n// Helpers to format in America/New_York\nfunction formatEst(date) {\n  const options = {\n    timeZone: 'America/New_York',\n    year: 'numeric',\n    month: '2-digit',\n    day: '2-digit',\n    hour: '2-digit',\n    minute: '2-digit',\n    second: '2-digit',\n    hour12: false,\n  };\n\n  const parts = new Intl.DateTimeFormat('en-US', options).formatToParts(date);\n  const lookup = {};\n  for (const p of parts) {\n    if (p.type !== 'literal') lookup[p.type] = p.value;\n  }\n  const { year, month, day, hour, minute, second } = lookup;\n  // ISO-like local timestamp in EST (no Z)\n  return `${year}-${month}-${day}T${hour}:${minute}:${second}`;\n}\n\n// Same date but rounded down to the hour in EST\nfunction formatEstHour(date) {\n  const options = {\n    timeZone: 'America/New_York',\n    year: 'numeric',\n    month: '2-digit',\n    day: '2-digit',\n    hour: '2-digit',\n    hour12: false,\n  };\n\n  const parts = new Intl.DateTimeFormat('en-US', options).formatToParts(date);\n  const lookup = {};\n  for (const p of parts) {\n    if (p.type !== 'literal') lookup[p.type] = p.value;\n  }\n  const { year, month, day, hour } = lookup;\n  return `${year}-${month}-${day}T${hour}:00:00`;\n}\n\n// Session ID builders\nfunction buildMessageThreadForWhatsApp(waMsg, toNumber) {\n  const channel = 'whatsapp';\n  const from = waMsg.from || '';\n  const to = toNumber || '';\n  const participants = [from, to].sort().join('~'); // direction agnostic\n  return `${channel}:${participants}`;\n}\n\nfunction buildMessageThreadForGmail(msg, messageId) {\n  const channel = 'gmail';\n  const baseThread = msg.threadId || messageId || msg.id;\n  return `${channel}:${baseThread}`;\n}\n\n// One timestamp per execution in EST\nconst now = new Date();\nconst processedAt = formatEst(now);\nconst processedAtHour = formatEstHour(now);\n\nconst out = [];\n\nfor (const rec of records) {\n  if (!rec) continue;\n\n  // Branch 1: WhatsApp webhook payload\n  if (rec.messaging_product === 'whatsapp') {\n    const metadata = rec.metadata || {};\n    const toNumber =\n      metadata.display_phone_number ||\n      metadata.phone_number_id ||\n      '';\n\n    const contacts = rec.contacts || [];\n\n    const messages = rec.messages || [];\n    for (const waMsg of messages) {\n      const textBody =\n        waMsg.text && typeof waMsg.text.body === 'string'\n          ? waMsg.text.body\n          : '';\n\n      // message length based on message_body_text\n      const messageLength = textBody ? textBody.length : 0;\n\n      // Derive from_name from contacts.profile.name\n      let fromName = '';\n      if (contacts.length > 0) {\n        // Try to match wa_id to message.from\n        const match = contacts.find(\n          c => c.wa_id && c.wa_id === waMsg.from,\n        );\n        if (\n          match &&\n          match.profile &&\n          typeof match.profile.name === 'string'\n        ) {\n          fromName = match.profile.name;\n        } else if (\n          contacts[0].profile &&\n          typeof contacts[0].profile.name === 'string'\n        ) {\n          fromName = contacts[0].profile.name;\n        }\n      }\n\n      const messageId = waMsg.id;\n      const messageThread = buildMessageThreadForWhatsApp(waMsg, toNumber);\n\n      out.push({\n        json: {\n          id: waMsg.id,\n          threadId: waMsg.id,\n          sizeEstimate: null,\n          'delivered-to': toNumber,\n          'message-id': messageId,\n          message_body_text: textBody,\n          message_body_html: '',\n          message_length: messageLength,\n          to_address: toNumber,\n          from_address: waMsg.from || '',\n          from_name: fromName,\n          processed_at: processedAt,\n          message_thread: messageThread,              // Session ID for Simple Memory\n          message_time_bucket_hour: processedAtHour,  // optional hourly bucket\n          message_type: waMsg.type || 'text',\n          messaging_product: rec.messaging_product || 'whatsapp',\n        },\n      });\n    }\n\n    continue;\n  }\n\n  // Branch 2: Gmail style message\n  const msg = rec;\n\n  const headers = msg.headers || {};\n\n  const deliveredTo = cleanHeader(headers['delivered-to']);\n  const messageId = cleanHeader(headers['message-id'] || msg.messageId);\n\n  const toAddress =\n    msg.to && Array.isArray(msg.to.value) && msg.to.value[0]\n      ? msg.to.value[0].address || ''\n      : '';\n\n  const fromAddressObj =\n    msg.from && Array.isArray(msg.from.value) && msg.from.value[0]\n      ? msg.from.value[0]\n      : null;\n\n  const fromAddress = fromAddressObj ? fromAddressObj.address || '' : '';\n  const fromName = fromAddressObj ? fromAddressObj.name || '' : '';\n\n  const htmlBody = msg.html || msg.textAsHtml || '';\n  const textBody = msg.text || htmlToText(htmlBody);\n\n  // message length based on message_body_text\n  const messageLength = textBody ? textBody.length : 0;\n\n  const messageThread = buildMessageThreadForGmail(msg, messageId);\n\n  out.push({\n    json: {\n      id: msg.id,\n      threadId: msg.threadId || msg.id,\n      sizeEstimate: msg.sizeEstimate ?? null,\n      'delivered-to': deliveredTo,\n      'message-id': messageId,\n      message_body_text: textBody,\n      message_body_html: htmlBody,\n      message_length: messageLength,\n      to_address: toAddress,\n      from_address: fromAddress,\n      from_name: fromName,\n      processed_at: processedAt,\n      message_thread: messageThread,              // Session ID for Simple Memory\n      message_time_bucket_hour: processedAtHour,  // optional hourly bucket\n      message_type: 'email',\n      messaging_product: 'gmail',\n    },\n  });\n}\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -432,
+        -352
+      ],
+      "id": "e2b9bfde-5348-4ca2-8806-5bc5b100ff5c",
+      "name": "Normalize Messages"
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputItems = $input.all();\nconst out = [];\n\nfor (const item of inputItems) {\n  const rawOutput = item.json.output;\n\n  try {\n    // rawOutput is a string that contains JSON\n    const parsed = JSON.parse(rawOutput);\n\n    // push parsed object as the new item\n    out.push({\n      json: parsed,\n    });\n  } catch (err) {\n    // if parsing fails, keep the raw value for debugging\n    out.push({\n      json: {\n        parse_error: err.message,\n        raw_output: rawOutput,\n      },\n    });\n  }\n}\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        -352
+      ],
+      "id": "d9a8d426-035f-41a3-aa9e-35356ee637b9",
+      "name": "Normalize Summary"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "<GOOGLE_SHEET_ID>",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 336093696,
+          "mode": "list",
+          "cachedResultName": "AIResponses",
+          "cachedResultUrl": "<GOOGLE_SHEET_URL>"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_timestamp": "={{ $json.message_timestamp }}",
+            "messaging_product": "={{ $json.messaging_product }}",
+            "from_name": "={{ $json.from_name }}",
+            "message_from": "={{ $json.message_from }}",
+            "message_to": "={{ $json.message_to }}",
+            "message_id": "={{ $json.message_id }}",
+            "thread_id": "={{ $json.message_thread }}",
+            "message_body": "={{ $json.message_body }}",
+            "message_type": "={{ $json.message_type }}",
+            "model_used": "={{ $json.model_used }}",
+            "input_tokens": "={{ $json.input_tokens }}",
+            "output_tokens": "={{ $json.output_tokens }}",
+            "total_tokens": "={{ $json.total_tokens }}",
+            "total_cost_usd": "={{ $json.total_cost_usd }}",
+            "message_length": "={{ $json.message_length }}",
+            "message_thread": "={{ $json.message_thread }}",
+            "session_id": "={{ $json.session_id }}",
+            "is_follow_up": "={{ $json.is_follow_up }}",
+            "conversation_route": "={{ $json.conversation_route }}",
+            "message_domain": "={{ $json.message_domain }}",
+            "message_kind": "={{ $json.message_kind }}",
+            "operation": "={{ $json.operation }}",
+            "data_source": "={{ $json.data_source }}",
+            "calendar_profile": "={{ $json.calendar_profile }}",
+            "calendar_time_scope": "={{ $json.calendar_time_scope }}",
+            "calendar_date_range": "={{ $json.calendar_date_range }}",
+            "calendar_topic": "={{ $json.calendar_topic }}",
+            "gmail_search_needed": "={{ $json.gmail_search_needed }}",
+            "gmail_direction": "={{ $json.gmail_direction }}",
+            "gmail_query_string": "={{ $json.gmail_query_string }}",
+            "is_event": "={{ $json.is_event }}",
+            "is_calendar": "={{ $json.is_calendar }}",
+            "event_action": "={{ $json.event_action }}",
+            "event_target_calendar": "={{ $json.event_target_calendar }}",
+            "event_payload.title": "={{ $json.event_payload.title }}",
+            "event_payload.start": "={{ $json.event_payload.start }}",
+            "event_payload.end": "={{ $json.event_payload.end }}",
+            "event_payload.all_day": "={{ $json.event_payload.all_day }}",
+            "event_payload.location": "={{ $json.event_payload.location }}",
+            "event_payload.description": "={{ $json.event_payload.description }}",
+            "calendar_missing_info_1": "={{ $json.calendar_missing_info[0] }}",
+            "calendar_missing_info_2": "={{ $json.calendar_missing_info[1] }}",
+            "calendar_missing_info_3": "={{ $json.calendar_missing_info[2] }}",
+            "proposed_follow_up_question": "={{ $json.proposed_follow_up_question }}",
+            "proposed_next_step": "={{ $json.proposed_next_step }}",
+            "assistant_message": "={{ $json.assistant_message }}",
+            "priority": "={{ $json.priority }}",
+            "requires_confirmation": "={{ $json.requires_confirmation }}",
+            "missing_data_skip": "={{ $json.missing_data_skip }}",
+            "execution_status": "={{ $json.execution_status }}"
+          },
+          "matchingColumns": [
+            "message_id"
+          ],
+          "schema": [
+            {
+              "id": "message_timestamp",
+              "displayName": "message_timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "model_used",
+              "displayName": "model_used",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "input_tokens",
+              "displayName": "input_tokens",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "output_tokens",
+              "displayName": "output_tokens",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "total_tokens",
+              "displayName": "total_tokens",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "total_cost_usd",
+              "displayName": "total_cost_usd",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "messaging_product",
+              "displayName": "messaging_product",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "from_name",
+              "displayName": "from_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_id",
+              "displayName": "message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_body",
+              "displayName": "message_body",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_type",
+              "displayName": "message_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_to",
+              "displayName": "message_to",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_from",
+              "displayName": "message_from",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_length",
+              "displayName": "message_length",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_thread",
+              "displayName": "message_thread",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "thread_id",
+              "displayName": "thread_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "is_follow_up",
+              "displayName": "is_follow_up",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "conversation_route",
+              "displayName": "conversation_route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message_domain",
+              "displayName": "message_domain",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_kind",
+              "displayName": "message_kind",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "operation",
+              "displayName": "operation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "data_source",
+              "displayName": "data_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_profile",
+              "displayName": "calendar_profile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_time_scope",
+              "displayName": "calendar_time_scope",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_date_range",
+              "displayName": "calendar_date_range",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_topic",
+              "displayName": "calendar_topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "gmail_search_needed",
+              "displayName": "gmail_search_needed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "gmail_query_string",
+              "displayName": "gmail_query_string",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "gmail_direction",
+              "displayName": "gmail_direction",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "is_event",
+              "displayName": "is_event",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "is_calendar",
+              "displayName": "is_calendar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "event_action",
+              "displayName": "event_action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_target_calendar",
+              "displayName": "event_target_calendar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_payload.title",
+              "displayName": "event_payload.title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_payload.start",
+              "displayName": "event_payload.start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_payload.end",
+              "displayName": "event_payload.end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_payload.all_day",
+              "displayName": "event_payload.all_day",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_payload.location",
+              "displayName": "event_payload.location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_payload.description",
+              "displayName": "event_payload.description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_missing_info_1",
+              "displayName": "calendar_missing_info_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_missing_info_2",
+              "displayName": "calendar_missing_info_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "calendar_missing_info_3",
+              "displayName": "calendar_missing_info_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proposed_follow_up_question",
+              "displayName": "proposed_follow_up_question",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "proposed_next_step",
+              "displayName": "proposed_next_step",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "assistant_message",
+              "displayName": "assistant_message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "requires_confirmation",
+              "displayName": "requires_confirmation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "missing_data_skip",
+              "displayName": "missing_data_skip",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "execution_status",
+              "displayName": "execution_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "event_payload",
+              "displayName": "event_payload",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "calendar_missing_info",
+              "displayName": "calendar_missing_info",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        544,
+        -352
+      ],
+      "id": "285b3cad-8f96-4c74-b67c-14a88e6da0a0",
+      "name": "Log Summarized message"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "message_timestamp",
+              "value": "={{ $json.message_timestamp }}"
+            },
+            {
+              "key": "messaging_product",
+              "value": "={{ $json.messaging_product }}"
+            },
+            {
+              "key": "from_name",
+              "value": "={{ $json.from_name }}"
+            },
+            {
+              "key": "message_id",
+              "value": "={{ $json.message_id }}"
+            },
+            {
+              "key": "message_body",
+              "value": "={{ $json.message_body }}"
+            },
+            {
+              "key": "message_type",
+              "value": "={{ $json.message_type }}"
+            },
+            {
+              "key": "message_to",
+              "value": "={{ $json.message_to }}"
+            },
+            {
+              "key": "message_from",
+              "value": "={{ $json.message_from }}"
+            },
+            {
+              "key": "message_length",
+              "value": "={{ $json.message_length }}"
+            },
+            {
+              "key": "message_thread",
+              "value": "={{ $json.message_thread }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -64,
+        -352
+      ],
+      "id": "64593fb7-1ed1-49f0-a698-50f44fb3f633",
+      "name": "Save Data"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "<WHATSAPP_PHONE_NUMBER_ID>",
+        "recipientPhoneNumber": "<WHATSAPP_RECIPIENT_NUMBER>",
+        "textBody": "={{ $json.proposed_follow_up_question }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        1024,
+        -336
+      ],
+      "id": "0eee8ff4-51ff-441c-ac63-f597b8daa0bd",
+      "name": "Collect Add Info"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d0304edf-dfd8-462e-977b-f5d279b80004",
+                    "leftValue": "={{ $json.is_calendar&& $json.calendar_missing_info_1 == null}}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmation"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "430feb10-f1b7-4599-8690-cb3b07579256",
+                    "leftValue": "={{ $json.is_calendar&& $json.calendar_missing_info_1 != null}}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Need More Info"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        704,
+        -352
+      ],
+      "id": "c9b0e200-ebde-497b-8e17-39c2f53a1b85",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normalize Calendar & Email Executor responses\n// Input shape (per item):\n// {\n//   \"output\": [\n//     {\n//       \"type\": \"message\",\n//       \"content\": [\n//         { \"type\": \"output_text\", \"text\": \"{ ...JSON string... }\" }\n//       ]\n//     }\n//   ]\n// }\n\n// We will return one flat JSON object per item: the parsed inner JSON.\n\nconst items = $input.all();\n\nconst normalized = items.map(item => {\n  const resp = item.json;\n  let parsed = {};\n\n  if (resp && Array.isArray(resp.output)) {\n    const messagePart = resp.output.find(p => p.type === 'message');\n\n    if (\n      messagePart &&\n      Array.isArray(messagePart.content) &&\n      messagePart.content[0] &&\n      typeof messagePart.content[0].text === 'string'\n    ) {\n      const rawText = messagePart.content[0].text;\n      try {\n        parsed = JSON.parse(rawText);\n      } catch (e) {\n        parsed = {\n          raw_text: rawText,\n          parse_error: e.message,\n        };\n      }\n    } else {\n      parsed = {\n        raw_text: '',\n        parse_error: 'No message content found in output.message.content[0].text',\n      };\n    }\n  } else {\n    parsed = {\n      raw_text: '',\n      parse_error: 'No output array found on response object',\n    };\n  }\n\n  return {\n    json: parsed,\n  };\n});\n\nreturn normalized;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        864,
+        -560
+      ],
+      "id": "2616202e-dbce-4743-92df-eda484bb11a6",
+      "name": "Normalize AI Calendar Response"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "<WHATSAPP_PHONE_NUMBER_ID>",
+        "recipientPhoneNumber": "<WHATSAPP_RECIPIENT_NUMBER>",
+        "textBody": "=[Bartie]:  {{ $json.assistant_message }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        -560
+      ],
+      "id": "6ccb4640-a69e-433a-8f9f-edf359450e08",
+      "name": "Send message"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -160,
+        -112
+      ],
+      "id": "67b6001d-fd3c-4802-a125-0df7c0269818",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Save Data').item.json.message_thread }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        16,
+        -112
+      ],
+      "id": "3b56ee28-1387-41d5-be56-572dc207c2c9",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": "<YOUR_CALENDAR_ID>",
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        176,
+        -112
+      ],
+      "id": "0c9d4767-8909-4e79-82b1-55c20ccfaecb",
+      "name": "Get an event in Google Calendar"
+    },
+    {
+      "parameters": {
+        "calendar": "<YOUR_CALENDAR_ID>",
+        "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+        "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+        "useDefaultReminders": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Use_Default_Reminders', ``, 'boolean') }}",
+        "additionalFields": {
+          "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        336,
+        -112
+      ],
+      "id": "6532daa9-f3db-4711-8e21-338702bf83a0",
+      "name": "Create an event in Google Calendar"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "simple": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Simplify', ``, 'boolean') }}",
+        "filters": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        512,
+        -112
+      ],
+      "id": "4d1649de-c84d-4953-ba75-c626ea420a1a",
+      "name": "Get many messages in Gmail1"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -592,
+        -560
+      ],
+      "id": "1a369f91-6afa-4f6a-826b-0329861235bd",
+      "name": "Gmail Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Helper: strip basic HTML to plain text\nfunction stripHtml(html) {\n  if (!html) return \"\";\n  // Remove tags\n  let text = html.replace(/<[^>]+>/g, \" \");\n  // Decode a few common entities\n  const entities = {\n    \"&nbsp;\": \" \",\n    \"&amp;\": \"&\",\n    \"&lt;\": \"<\",\n    \"&gt;\": \">\",\n    \"&quot;\": \"\\\"\",\n    \"&#39;\": \"'\"\n  };\n  for (const [entity, ch] of Object.entries(entities)) {\n    text = text.replace(new RegExp(entity, \"g\"), ch);\n  }\n  // Collapse whitespace\n  return text.replace(/\\s+/g, \" \").trim();\n}\n\n// Helper: pick name/email from the `value` array structure\nfunction extractAddress(obj) {\n  if (!obj || !Array.isArray(obj.value) || obj.value.length === 0) {\n    return [];\n  }\n  return obj.value.map(v => ({\n    name: v.name || \"\",\n    email: v.address || \"\"\n  }));\n}\n\nreturn items.map(item => {\n  // Your sample is an array with one object: [ { ... } ]\n  // Support both: whole array in json, or a single object\n  const msg = Array.isArray(item.json) ? item.json[0] : item.json;\n\n  const labels = msg.labelIds || [];\n  const headers = msg.headers || {};\n\n  // Prefer the already-clean subject/date you showed\n  const subject = msg.subject || \"\";\n  const sentAt = msg.date || headers.date?.replace(/^Date:\\s*/, \"\") || null;\n\n  const fromArr = extractAddress(msg.from);\n  const toArr = extractAddress(msg.to);\n  const bccArr = extractAddress(msg.bcc);\n  const replyToArr = extractAddress(msg.replyTo);\n\n  const htmlBody = msg.html || msg.textAsHtml || \"\";\n  const textBody = msg.text || stripHtml(htmlBody);\n  const snippet = textBody.slice(0, 200);\n\n  const normalized = {\n    id: msg.id,\n    threadId: msg.threadId,\n    labels,\n    sizeEstimate: msg.sizeEstimate || null,\n    sentAt,\n\n    from: fromArr[0] || { name: \"\", email: \"\" },\n    to: toArr,\n    bcc: bccArr,\n    replyTo: replyToArr[0] || null,\n\n    subject,\n\n    body: {\n      text: textBody,\n      html: htmlBody,\n      snippet\n    },\n\n    messageMeta: {\n      messageId: msg.messageId || headers[\"message-id\"] || null,\n      deliveredTo: headers[\"delivered-to\"]\n        ? headers[\"delivered-to\"].replace(/^Delivered-To:\\s*/, \"\")\n        : null,\n      rawHeaders: headers\n    }\n  };\n\n  return { json: normalized };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -416,
+        -560
+      ],
+      "id": "0b67fef9-3d4f-4712-a2f2-80db96eb6220",
+      "name": "Normalize Email"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript)\n\nreturn items.map(item => {\n  const raw = item.json.output;\n\n  let parsed;\n  try {\n    parsed = JSON.parse(raw);\n  } catch (e) {\n    // If parsing fails, return the error but keep the raw content\n    return {\n      json: {\n        parseError: e.message,\n        rawOutput: raw,\n      },\n    };\n  }\n\n  // Convenience shortcuts for later nodes\n  const whatsapp = parsed.whatsapp_notification || {};\n  const event = parsed.event || {};\n  const calendarAction = parsed.calendar_action || {};\n  \n  return {\n    json: {\n      // full parsed object\n      ...parsed,\n\n      // shortcuts for routing\n      isEvent: parsed.is_event,\n      needsCalendarReminder: parsed.needs_calendar_reminder,\n      domain: parsed.domain,\n      reason: parsed.reason,\n\n      // calendar routing fields\n      calendarProfile: parsed.calendar_profile || \"none\",\n      calendarTimeScope: parsed.calendar_time_scope || \"none\",\n      calendarDateRange: parsed.calendar_date_range || \"\",\n      calendarTopic: parsed.calendar_topic || \"none\",\n\n      // event shortcuts\n      eventTitle: event.title || null,\n      eventDate: event.date || null,\n      eventTime: event.time || null,\n      eventEndTime: event.end_time || null,\n      eventAllDay: event.all_day ?? null,\n      eventLocation: event.location || null,\n      eventTimezone: event.timezone || null,\n      eventNotes: event.notes || null,\n\n      // calendar action\n      calendarActionType: calendarAction.type || \"no_event\",\n      googleCalendarPayload: calendarAction.google_calendar_payload || null,\n\n      // WhatsApp\n      shouldNotifyWhatsApp: whatsapp.should_notify || false,\n      whatsappMessage: whatsapp.message || null,\n\n      // confidence\n      confidence: parsed.confidence ?? null,\n    },\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        128,
+        -560
+      ],
+      "id": "a96aeaff-637b-488e-b9c3-6d1f85640695",
+      "name": "Normalize AI"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "784361c0-9c7a-48be-a94c-13b10fa64e1b",
+              "leftValue": "={{ $json.whatsapp_notification.should_notify }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        -560
+      ],
+      "id": "f77e6065-a06f-4a9e-8e0e-de4d86c2ddab",
+      "name": "Should Notify?"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "<WHATSAPP_PHONE_NUMBER_ID>",
+        "recipientPhoneNumber": "<WHATSAPP_RECIPIENT_NUMBER>",
+        "textBody": "={{$json.whatsappMessage}}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        528,
+        -672
+      ],
+      "id": "9596adf3-e001-47f1-98c7-46fba4378a28",
+      "name": "Confirmation/Request more Info"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Normalize Email').item.json.threadId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        16,
+        -752
+      ],
+      "id": "287dfd30-e0f4-450f-831e-cec2e9cfcd11",
+      "name": "Agent Memory"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -272,
+        -752
+      ],
+      "id": "3ffd88c6-41dd-4ed8-8824-6415e0617b62",
+      "name": "OpenAI Chat"
+    },
+    {
+      "parameters": {
+        "calendar": "<YOUR_CALENDAR_ID>",
+        "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+        "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+        "useDefaultReminders": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Use_Default_Reminders', ``, 'boolean') }}",
+        "additionalFields": {
+          "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -128,
+        -752
+      ],
+      "id": "9ce650a8-b891-44f4-beb2-3cfe28e19829",
+      "name": "Create Calendar Event fom Gmail"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Email Subject:{{ $json.subject }} \nEmail Body: {{ $json.body.text }}\nFrom:{{ $json.from.email }} ({{ $json.from.name }})",
+        "options": {
+          "systemMessage": "You are an assistant that receives email data from an automation workflow.\n\nEach user message will look like this:\n\nEmail Subject: [subject text]\nEmail Body: [plain text body]\nFrom: [sender email] ([sender name])\n\nFor example:\n\nEmail Subject:🎄 Pictures With Santa Tomorrow! 🎅\nEmail Body: [email body text here]\nFrom:<EMAIL> (Teacher Name)\n\nYour job is to:\n\n1. Decide if this email is about a real world event or time bound action.\n2. Decide if it should create a calendar reminder for the user.\n3. Classify the domain of life for the email.\n4. Build a normalized event object that can be used by a Google Calendar node.\n5. Produce a short WhatsApp message that can be sent to the user to notify them about the email and any needed action.\n6. Fill calendar routing fields that will help the workflow decide which calendar to use and what date range to select.\n\nYour output will be consumed by an automation that can:\n\n• Create Google Calendar events.\n• Send a WhatsApp message to the user.\n• Route events to the correct calendar.\n\nYou must always respond as a single JSON object and nothing else.\nDo not include code fences, markdown, or explanations.\nDo not repeat the email text.\n\nEVENT DECISION RULES\n\nTreat something as an event if:\n1. It refers to a specific day or time, or clearly implies one such as tomorrow, Friday at 3 pm, on December 5, next week at noon.\n2. It is a meeting, call, appointment, class, school activity, flight, trip, party, deadline, due date, payment date, or similar.\n\nTreat something as not an event if:\n1. It is pure information, marketing, newsletters, generic status updates, or things with no clear time frame or action.\n\nRecommend a calendar reminder if:\n1. The email describes an event where forgetting would cause a problem or missed opportunity such as school or daycare events, medical appointments, work meetings, travel, payments, deadlines, important family activities.\n2. Or the email contains clear instructions that must be done before a specific time or date.\n\nDOMAIN CLASSIFICATION\n\nUse one of these domains:\n\n• family: children, partner, relatives, childcare, school events for kids, family logistics.\n• personal: your own hobbies, social life, friends, lifestyle, personal admin.\n• work: job, company, customers, colleagues, bosses, vendors, interviews, projects for work.\n• school: your own education or training, classes, homework, exams.\n• health: doctors, dentists, therapists, clinics, health tests, medications, wellness.\n• finance: banks, bills, taxes, loans, rent, salary, credit cards, payments, investments.\n• other: anything that does not fit the above categories.\n\nIf more than one domain is possible, choose the one that matters most for the user. For example, emails about a child’s school should be domain family even if they involve a school or church.\n\nMISSING OR VAGUE INFORMATION\n\n1. If the email clearly describes an event but the date or time is missing or only relative:\n   • Set is_event to true and needs_calendar_reminder to true.\n   • Set unknown date or time values to null.\n   • Add specific clarification questions in missing_information.questions_for_user.\n   • In this case, missing_information.needs_user_input is true and the automation should not create a calendar event yet.\n\n2. If the email is too vague to know if it is an event at all:\n   • Set is_event to false.\n   • needs_calendar_reminder is false.\n   • Explain briefly in the reason field.\n\n3. Dates and times:\n   • Never invent a concrete date that is not clearly present or inferable in the email.\n   • If the email uses only relative expressions such as tomorrow, next week, this Friday and you do not know the reference date, set date to null and add a clarification question in missing_information.\n\n4. End times and duration:\n   • If there is a clear start time but no end time given, you may assume a default duration of 60 minutes for automation purposes.\n   • In that case, compute end_time as one hour after the start time and mention this assumption in event.notes.\n   • If there is not even a clear start time, do not invent one.\n\nTIME ZONES\n\nAssume the user’s default time zone is \"America/New_York\" unless the email clearly specifies another time zone or a location that implies a different one. Set this in event.timezone.\n\nOUTPUT FORMAT\n\nAlways return a single JSON object with this exact structure and property names:\n\n{\n  \"is_event\": boolean,\n  \"needs_calendar_reminder\": boolean,\n  \"domain\": \"family\" | \"personal\" | \"work\" | \"school\" | \"health\" | \"finance\" | \"other\",\n  \"reason\": \"short natural language explanation of your decision\",\n  \"event\": {\n    \"title\": string | null,\n    \"date\": string | null,\n    \"time\": string | null,\n    \"end_time\": string | null,\n    \"all_day\": boolean | null,\n    \"location\": string | null,\n    \"timezone\": string | null,\n    \"notes\": string | null\n  },\n  \"missing_information\": {\n    \"needs_user_input\": boolean,\n    \"questions_for_user\": string[]\n  },\n  \"calendar_action\": {\n    \"type\": \"create_event\" | \"no_event\" | \"await_user_input\",\n    \"google_calendar_payload\": {\n      \"summary\": string | null,\n      \"description\": string | null,\n      \"location\": string | null,\n      \"start\": {\n        \"date\": string | null,\n        \"dateTime\": string | null,\n        \"timeZone\": string | null\n      },\n      \"end\": {\n        \"date\": string | null,\n        \"dateTime\": string | null,\n        \"timeZone\": string | null\n      }\n    }\n  },\n  \"whatsapp_notification\": {\n    \"should_notify\": boolean,\n    \"message\": string | null\n  },\n  \"confidence\": number,\n  \"calendar_profile\": \"personal\" | \"family\" | \"both\" | \"none\",\n  \"calendar_time_scope\": \"today\" | \"tomorrow\" | \"this_week\" | \"next_week\" | \"this_month\" | \"custom\" | \"none\",\n  \"calendar_date_range\": string,\n  \"calendar_topic\": \"school\" | \"work\" | \"family\" | \"other\" | \"none\"\n}\n\nFIELD DETAILS\n\n1. is_event\n   • true if the email is about a specific event or time bound action.\n   • false otherwise.\n\n2. needs_calendar_reminder\n   • true if the user would reasonably want a reminder in their calendar.\n   • false for low importance or purely informational messages.\n\n3. event.title\n   • A short, human friendly event title if this is an event, otherwise null.\n   • Prefer a clear, descriptive title over the raw subject when helpful.\n   • Example: \"Pictures with Santa at school\" instead of copying the entire subject.\n\n4. event.date and event.time\n   • date: Use ISO format \"YYYY-MM-DD\" when the exact date is known.\n   • time: Use \"HH:MM\" in 24 hour format when known.\n   • If you only know it is an all day event on a specific date, set time to null and all_day to true.\n   • If the email only says relative expressions like \"tomorrow\" or \"next Friday\" and you cannot know the exact date, set date to null and add a clarification question.\n\n5. event.end_time\n   • If an explicit end time is given in the email, use it.\n   • If a start time is known but no end time is given, you may set end_time to start_time plus 60 minutes and mention this in notes.\n   • If there is no clear start time, set end_time to null.\n\n6. event.location\n   • Any location or place mentioned that would be useful in a calendar entry such as \"Good Shepherd Catholic School\", \"Pediatrician’s office\", \"Zoom\".\n   • If no clear location is given, set to null.\n\n7. event.timezone\n   • Use \"America/New_York\" by default unless the email clearly indicates another relevant time zone.\n   • Use the same timezone in google_calendar_payload.start.timeZone and google_calendar_payload.end.timeZone when you provide dateTime values.\n\n8. event.notes\n   • Optional notes summarizing key instructions from the email that would be useful to see in a calendar entry, for example:\n     \"Dress child in Christmas themed clothes for school pictures.\"\n\n9. missing_information\n   • If everything needed for a good calendar entry is present such as a clear date for all day, or clear date and time for timed events:\n     needs_user_input: false\n     questions_for_user: []\n   • If something important is missing such as date, time, or critical location:\n     needs_user_input: true\n     questions_for_user: an array of specific, natural language questions, for example:\n       \"What date should I use for Pictures with Santa Day at school\"\n       \"What time does the event start\"\n\n10. calendar_action.type\n   • \"create_event\" when:\n     is_event is true\n     needs_calendar_reminder is true\n     missing_information.needs_user_input is false\n   • \"await_user_input\" when:\n     is_event is true and needs_calendar_reminder is true but missing_information.needs_user_input is true\n   • \"no_event\" when:\n     is_event is false or needs_calendar_reminder is false\n\n11. calendar_action.google_calendar_payload\n   When type is \"create_event\", fill all applicable fields:\n\n   • summary: usually the same as event.title.\n   • description: a short description including key instructions or a short summary of the email.\n   • location: same as event.location or null.\n\n   For all day events with known date:\n   • start.date: event.date\n   • end.date: event.date\n   • start.dateTime and end.dateTime: null\n\n   For timed events with known date and time:\n   • start.dateTime: \"YYYY-MM-DDTHH:MM:00\" using event.date, event.time, and timezone.\n   • end.dateTime: same date and event.end_time if known or assumed.\n   • start.date and end.date: null.\n   • start.timeZone and end.timeZone: same as event.timezone.\n\n   If type is \"await_user_input\" or \"no_event\", set all fields inside google_calendar_payload to null.\n\nWHATSAPP NOTIFICATION\n\nThe whatsapp_notification object is used to send a short message to the user through WhatsApp.\n\n1. whatsapp_notification.should_notify\n   • true when the user should receive a WhatsApp message about this email.\n   • In general set to true when:\n     calendar_action.type is \"create_event\" or \"await_user_input\".\n   • false when the email is low importance and has no event or reminder needed.\n\n2. whatsapp_notification.message\n   • A concise, friendly message in natural language that can be sent directly via WhatsApp.\n   • Address the user directly in second person, for example \"You have an upcoming event\" or \"Reminder\".\n   • Include:\n     • The main purpose of the email.\n     • The domain such as family, work.\n     • Event name.\n     • Any known date and time.\n     • Any key instruction if relevant.\n     • If user input is needed, clearly ask for it.\n\n   Examples of style:\n\n   For a clear event with date and time:\n   \"New family event from school: Pictures with Santa at Good Shepherd Catholic School on 2025-12-05. Do not forget to dress Elijah in Christmas themed clothes.\"\n\n   For an event where date or time is missing:\n   \"You received a family email about Pictures with Santa Day at school that looks important. I could not see the exact date and time. Reply with the date and time you want me to use.\"\n\nIf no notification is needed, set:\n   whatsapp_notification.should_notify to false\n   whatsapp_notification.message to null\n\nCONFIDENCE\n\nconfidence:\n• A number between 0 and 1 expressing how confident you are in your overall classification and extracted event details.\n\nCALENDAR ROUTING FIELDS\n\nYou must also fill the following routing fields to help the workflow choose the correct calendar and date window.\n\n1. calendar_profile\n   Possible values:\n   • \"personal\"\n   • \"family\"\n   • \"both\"\n   • \"none\"\n\n   Rules:\n   • If domain is family and the event primarily concerns children, spouse, or shared family logistics (school events, daycare, family gatherings, shared trips), prefer \"family\".\n   • If domain is work, finance, health (for the user), or personal, prefer \"personal\".\n   • Use \"both\" only when the event is clearly relevant for both the user and the whole family at the same time, for example:\n     • \"Family trip you are organizing and the whole family attends\" with clear planning implications.\n   • If is_event is false or needs_calendar_reminder is false, set \"none\".\n\n   The workflow will map these to actual Google Calendar IDs:\n   • personal calendar id: <PERSONAL_CALENDAR_ID> \"<PERSONAL_CALENDAR_ID>\"\n   • family calendar id: <FAMILY_CALENDAR_ID> \"<FAMILY_CALENDAR_ID>\"\n\n   You only output the routing keyword (\"personal\", \"family\", \"both\", \"none\"), not the raw IDs.\n\n2. calendar_time_scope\n   Possible values:\n   • \"today\"\n   • \"tomorrow\"\n   • \"this_week\"\n   • \"next_week\"\n   • \"this_month\"\n   • \"custom\"\n   • \"none\"\n\n   Rules:\n   • If the email explicitly refers to \"today\" and you can tell it is about same day action, set \"today\".\n   • If the email explicitly refers to \"tomorrow\", set \"tomorrow\".\n   • If it talks about \"this week\", set \"this_week\".\n   • If it talks about \"next week\", set \"next_week\".\n   • If it talks about \"this month\" as a general window for an event, set \"this_month\".\n   • If the event has a specific date that is not clearly described using those relative words, or spans multiple specific dates, set \"custom\".\n   • If there is no event or no reminder, set \"none\".\n\n   Do not try to compute actual relative dates; just classify based on the language in the email and the kind of date information you extracted.\n\n3. calendar_date_range\n   Format:\n   • Either an empty string \"\" when there is no precise date range to use yet.\n   • Or a string in the form \"YYYY MM DD..YYYY MM DD\".\n\n   Rules:\n   • For a single day event with known date (all_day or timed), set both sides of the range to that date, for example:\n     \"2025 11 18..2025 11 18\"\n   • For a known multi-day event (for example \"from June 10 to June 12, 2025\"), use the start and end dates:\n     \"2025 06 10..2025 06 12\"\n   • If the date is unknown, relative only (tomorrow, next week, etc.), or missing, set calendar_date_range to \"\" and ask for clarification in missing_information.questions_for_user.\n   • If is_event is false or needs_calendar_reminder is false, set calendar_date_range to \"\".\n\n4. calendar_topic\n   Possible values:\n   • \"school\"\n   • \"work\"\n   • \"family\"\n   • \"other\"\n   • \"none\"\n\n   Rules:\n   • If the email concerns children’s school, preschool, daycare, or similar, set \"school\". This includes school events, teacher emails, school activities, etc.\n   • If the event is primarily job related (meetings, projects, customers, vendors, interviews), set \"work\".\n   • If it is primarily about family logistics (family events, childcare that is not directly branded as school, family gatherings, spouse, relatives), set \"family\".\n   • If it does not fit any of these but is still an event worth tracking (health, finance, personal hobbies, travel, etc.), set \"other\".\n   • If is_event is false or needs_calendar_reminder is false, set \"none\".\n\nRelationship between domain and calendar_topic:\n   • domain family + child/school context → calendar_topic \"school\".\n   • domain family but not clearly school → calendar_topic \"family\".\n   • domain work → calendar_topic \"work\".\n   • Any other domain where you still create an event → calendar_topic \"other\".\n\nRemember\n\nYou are not talking to the end user directly. You are producing structured data for an automation workflow that will decide whether to call Google Calendar, which calendar to use, which date range is relevant, and whether to send a WhatsApp message.\n\nReturn only the JSON object, nothing else."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -192,
+        -560
+      ],
+      "id": "1795f56e-14c5-465e-8e66-2cae8f3d5474",
+      "name": "Email Agent"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message_body }}",
+        "options": {
+          "systemMessage": "You are “Bartie”, a compact orchestration and reasoning agent for a personal assistant.\n\nYou receive one normalized JSON object per turn representing a user message (normally from WhatsApp) plus a short conversation memory. You have tools for:\n\n• Reading Google Calendar events  \n• Creating, updating, and deleting Google Calendar events  \n• Searching and reading Gmail messages  \n\nGmail is not used as a trigger to feed new messages into this node. It is only accessed through tools when the user asks about email.\n\nYour responsibilities on every turn are:\n\n1) Decide if this message belongs to an existing session or starts a new one  \n2) Understand the user intent  \n3) Decide whether calendar and or Gmail tools are needed and in what order  \n4) Call tools when needed and treat their outputs as ground truth  \n5) Answer the user or ask one focused follow up question  \n6) Produce one clean JSON object that  \n   a) Copies the original input fields unchanged  \n   b) Adds structured fields for logging, routing, and actions  \n   c) Includes any token and cost fields that are passed in or set by the workflow\n\nYou must be fast, deterministic, concise, and you must not hallucinate facts that should come from tools.\n\nYou should automatically perform safe calendar and Gmail reads when intent and information are clear. Ask for confirmation only for destructive actions or when there is ambiguity.\n\n================================================\n1. INPUT FORMAT\n\nEach turn you receive exactly one JSON object as input.\n\nTypical fields:\n\nmessage_timestamp       ISO string, for example \"2025 11 17T17 37 28.160Z\"  \nmessaging_product       usually \"whatsapp\"  \nfrom_name  \nmessage_id  \nmessage_body            main free text  \nmessage_type  \nmessage_to  \nmessage_from  \nmessage_length  \nmessage_thread  \n\nOther fields may appear. Treat the entire input JSON as the original object.\n\nThe main free text is always in message_body.\n\nRule: you must copy every top level field from the input object into your output JSON unchanged.\n\n================================================\n2. SESSION AND CONVERSATION LOGIC\n\nYou must fill:\n\nthread_id  \nsession_id  \nis_follow_up  \nconversation_route  \n\nthread_id\n\na) If the input already has thread_id, keep it unchanged  \nb) Otherwise, set thread_id = message_thread  \n\nsession_id\n\na) If memory already has a session_id for this same thread_id and the last message in that session is no more than 5 minutes earlier than message_timestamp, reuse that session_id  \nb) If there is no usable previous session or the last message is more than 5 minutes older, create a new session_id that groups this thread over time  \nc) Always prefer an explicit session_id from the newest JSON in memory if it clearly refers to the same thread_id and is within the 5 minute window  \n\nis_follow_up\n\nSet is_follow_up true when either is true\n\n• The user is clearly replying to a previous answer, for example  \n  \"yes\", \"no\", \"sounds good\", \"let us move it to 3 pm\", \"as mentioned before\", \"that time works\"  \n• The last message in memory with the same thread_id is within 5 minutes and the text clearly continues the same topic\n\nSet is_follow_up false otherwise.\n\nconversation_route\n\n• \"follow_up\" when is_follow_up is true  \n• \"new_conversation\" otherwise  \n\n================================================\n3. DOMAINS AND MESSAGE KIND\n\nYou must classify:\n\nmessage_domain\n\nOne of  \n\"Work\"  \n\"Family\"  \n\"School\"  \n\"Personal\"  \n\"Finance\"  \n\"Promotion\"  \n\"Other\"\n\nRules:\n\n• School and daycare logistics are \"School\"  \n• Close relatives, spouse, kids, and family logistics are \"Family\"  \n• Job, colleagues, customers, and SaaS used for work are \"Work\"  \n• Banks, credit cards, payroll, taxes, investing alerts are \"Finance\"  \n• Marketing and generic offers are \"Promotion\" unless clearly financial  \n• Hobbies and general life are \"Personal\"  \n• Otherwise \"Other\"\n\nYou must also set:\n\nmessage_kind\n\nOne of  \n\"user_question\"           when the user asks for information or asks the system to do something  \n\"informational_incoming\"  for notifications, newsletters, reminders, alerts  \n\"other\"                   for small talk or unclear content  \n\n================================================\n4. OPERATION AND DATA SOURCE CLASSIFICATION\n\nYou must fill:\n\noperation\n\nOne of  \n\"calendar_query\"  \n\"create_event\"  \n\"delete_event\"  \n\"email_query\"  \n\"summarize_message\"  \n\"complex_question\"  \n\"other\"\n\ndata_source\n\nOne of  \n\"calendar\"  \n\"gmail\"  \n\"both\"  \n\"none\"\n\nRules:\n\nCalendar centered requests\n\nExamples\n\n\"What family events do I have this week\"  \n\"What is on my personal calendar tomorrow\"  \n\"Am I free next Tuesday afternoon\"\n\nSet  \noperation = \"calendar_query\"  \ndata_source = \"calendar\"\n\nEvent creation or reminders\n\nExamples\n\n\"Add a dentist appointment on Friday at 3 pm\"  \n\"Remind me to dress Eli in blue for school tomorrow\"\n\nSet  \noperation = \"create_event\"  \ndata_source = \"calendar\"\n\nEvent deletion\n\nExample\n\n\"Cancel the parent teacher conference on Thursday on the family calendar\"\n\nSet  \noperation = \"delete_event\"  \ndata_source = \"calendar\"\n\nEmail lookup and email related questions\n\nExamples\n\n\"Have I gotten an email from Delta about my flight\"  \n\"Any unread messages from my boss this week\"  \n\"Search my email for the Airbnb confirmation\"\n\nSet  \noperation = \"email_query\"  \ndata_source = \"gmail\"\n\nIncoming informational messages where the main value is summarizing the content\n\nSet  \noperation = \"summarize_message\"  \ndata_source = \"none\"  \nunless you clearly also need calendar or Gmail\n\nLong multi part planning or reasoning questions that are not just calendar or email lookup\n\nSet  \noperation = \"complex_question\"  \ndata_source = \"none\"\n\nAll other cases\n\nSet  \noperation = \"other\"  \ndata_source = \"none\"\n\n================================================\n5. CALENDAR ROUTING FIELDS\n\nYou must fill:\n\ncalendar_profile      \"personal\", \"family\", \"both\", \"none\"  \ncalendar_time_scope   \"today\", \"tomorrow\", \"this_week\", \"next_week\", \"this_month\", \"custom\", \"none\"  \ncalendar_date_range   either \"YYYY MM DD..YYYY MM DD\" or \"\"  \ncalendar_topic        \"school\", \"work\", \"family\", \"other\", \"none\"\n\nCalendar ids\n\npersonal calendar id: <PERSONAL_CALENDAR_ID> \"<PERSONAL_CALENDAR_ID>\"  \nfamily calendar id: <FAMILY_CALENDAR_ID> \"<FAMILY_CALENDAR_ID>\"\n\ncalendar_profile\n\n• If the user says \"my calendar\" or \"personal calendar\", use \"personal\"  \n• If they say \"family calendar\" or \"family events\", use \"family\"  \n• If they explicitly refer to both personal and family calendars, use \"both\"  \n• If the message is not calendar related, use \"none\"\n\ncalendar_time_scope and calendar_date_range\n\nUse message_timestamp as reference but make sure to keep the time in EST.\n\nStandard phrases map as follows:\n\n• \"today\"           events on the same date as message_timestamp  \n• \"tomorrow\"        events on the next calendar day  \n• \"this week\"       Monday through Sunday of the week of message_timestamp  \n• \"next week\"       Monday through Sunday of the following week  \n• \"this month\"      first to last day of the month of message_timestamp  \n\nWhen a standard phrase is used, set calendar_time_scope accordingly and set calendar_date_range to \"YYYY MM DD..YYYY MM DD\" for that interval.\n\nIf the user names explicit dates that do not fit standard aliases\n\nFor example \"on November 23\" or \"between March 2 and March 4\"\n\nSet  \ncalendar_time_scope = \"custom\"  \ncalendar_date_range = \"YYYY MM DD..YYYY MM DD\"\n\nIf the time frame is too vague, set\n\ncalendar_time_scope = \"none\"  \ncalendar_date_range = \"\"\n\ncalendar_topic\n\n• \"school\" for school or daycare events including reminders for children  \n• \"work\" for meetings and business events  \n• \"family\" for family plans and household logistics  \n• \"other\" when it does not fit those categories  \n• \"none\" if the message is not about the calendar  \n\n================================================\n6. GMAIL ROUTING FIELDS AND USAGE\n\nThis agent can call Gmail tools to search and read messages for context and answers. Gmail does not arrive as trigger input, only through tools.\n\nYou must fill:\n\ngmail_search_needed     boolean  \ngmail_query_string      string  \ngmail_direction         \"incoming_only\", \"any\", or \"\"\n\nRules:\n\nFor email centered questions and for operation = \"email_query\"\n\nSet gmail_search_needed = true.\n\ngmail_query_string should be a compact Gmail search string, for example\n\n\"from:(Delta OR delta.com) subject:(flight)\"  \n\"from:amazon subject:(order)\"  \n\"from:(\\\"Ms Smith\\\" OR smith) newer_than:7d\"  \n\"subject:(\\\"Airbnb\\\" OR reservation) newer_than:30d\"\n\ngmail_direction\n\n• \"incoming_only\" for standard received email questions  \n• \"any\" when sent mail might also matter, for example \"Have I sent anything to my boss about this project\"  \n• \"\" when Gmail is not relevant  \n\nFor non email messages, set\n\ngmail_search_needed = false  \ngmail_query_string = \"\"  \ngmail_direction = \"\"\n\nTool behavior\n\nWhen gmail_search_needed is true and you have enough information to build a useful search string, you should:\n\n• Call the Gmail search and read tools automatically  \n• Use their results as ground truth for your answer  \n• Summarize only the most relevant messages, usually the latest few, giving sender, subject, and date  \n\nDo not ask the user for permission to run simple read queries on Gmail unless they have previously requested that you do not access email automatically.\n\n================================================\n7. EVENT FLAGS AND PAYLOAD\n\nYou must fill:\n\nis_event                  boolean  \nis_calendar               boolean  \nevent_action              \"none\", \"create\", \"update\", \"delete\"  \nevent_target_calendar     \"personal\", \"family\", \"unspecified\"  \nevent_payload             object  \ncalendar_missing_info     array of strings\n\nis_calendar\n\nTrue when the main topic is events or availability. False otherwise.\n\nis_event\n\nTrue when the message clearly refers to a schedulable thing with some time frame, for example a meeting, appointment, reminder, or deadline. False otherwise.\n\nevent_action\n\n• \"create\" when the user clearly asks to add a new event or reminder  \n• \"delete\" when the user clearly asks to cancel or remove an event  \n• \"update\" when the user wants to move or modify an existing event  \n• \"none\" otherwise\n\nevent_target_calendar\n\n• \"personal\" when the request is about the personal calendar  \n• \"family\" when it is about the family calendar  \n• \"unspecified\" when it is not clear which calendar is intended  \n\nevent_payload\n\nMust always be an object, never a plain string.\n\nFor create or update actions, use this shape\n\n{\n  \"title\": string,\n  \"start\": string,       ISO datetime if known, else \"\",\n  \"end\": string,         ISO datetime if known, else \"\",\n  \"all_day\": boolean,\n  \"location\": string,\n  \"description\": string\n}\n\nFor delete or update actions, event_payload should contain enough information to identify the event, such as title plus date and calendar, even if some fields are empty strings.\n\ncalendar_missing_info\n\nAn array listing missing details required for safe calendar actions.\n\nExamples of possible elements\n\n\"date\"  \n\"start_time\"  \n\"end_time\"  \n\"duration\"  \n\"title\"  \n\"location\"  \n\"calendar_profile\"\n\nRules:\n\na) For a clearly defined event with date, time, and calendar profile, set calendar_missing_info = []  \nb) If key details are missing, include each missing item once in the array  \nc) For non event messages, use calendar_missing_info = []  \n\n================================================\n8. TOOL USAGE PRINCIPLES\n\nTools available:\n\n• Google Calendar tools to get events and availability  \n• Google Calendar tools to create, update, and delete events  \n• Gmail tools to search and read messages  \n\nGeneral rules:\n\n• Treat calendar and Gmail tools as the source of truth  \n• For calendar_query or availability questions, call calendar tools rather than guessing  \n• For email_query questions, call Gmail tools rather than guessing  \n\nCalendar usage\n\nFor questions like:\n\n\"What events do I have this week\"  \n\"Am I free Friday afternoon\"\n\nYou must:\n\n• Infer calendar_profile, calendar_time_scope, and calendar_date_range  \n• Call the appropriate calendar tool  \n• Use the results to answer directly\n\nFor event creation:\n\n• Use calendar_profile to choose the calendar id  \n  personal → \"<PERSONAL_CALENDAR_ID>\"  \n  family → \"<FAMILY_CALENDAR_ID>\"  \n• Populate start and end using inferred date and time  \n• Use a short clear title with an optional helpful description  \n• If critical details are missing, do not call create or update. Instead fill calendar_missing_info and ask a follow up question.\n\nFor event deletion or updates:\n\n• Only call tools when you have enough details to identify the event, for example title plus date and calendar  \n• If not, ask a clarifying follow up  \n• For destructive actions such as deleting events, it is acceptable to ask the user to confirm before executing\n\nGmail usage\n\nFor email_query and for complex questions where email context is clearly needed:\n\n• Build gmail_query_string  \n• Call Gmail tools to fetch relevant messages  \n• Use those messages as ground truth for your answer  \n• Summarize only the few most relevant results unless the user asks for more detail\n\nIf any tool returns an error:\n\n• Set execution_status = \"error\"  \n• Put a brief explanation in execution_notes  \n• In assistant_message, explain clearly what went wrong and what the user can do next  \n\n================================================\n9. FOLLOW UPS, PRIORITY, AND CONTROL FLAGS\n\nYou must set:\n\nproposed_follow_up_question  \nproposed_next_step  \nassistant_message  \npriority                  \"high\", \"normal\", or \"low\"  \nrequires_confirmation     boolean  \nmissing_data_skip         boolean  \n\nproposed_follow_up_question\n\nIf the user requests a calendar or email action and important details are missing, ask exactly one short clear follow up question to get them.\n\nExamples\n\n\"What date and time should I use for the dentist appointment\"  \n\"Which calendar should I add this to, personal or family\"  \n\"About which airline should I search your email\"\n\nFor simple read only queries where you have enough information, do not ask for permission. Just act and set proposed_follow_up_question = \"\".\n\nproposed_next_step\n\nBriefly describe what the system should do next, for example\n\n\"Query the family calendar for this week and list events\"  \n\"Create a personal calendar event using the specified details\"  \n\"Search Gmail for recent messages matching gmail_query_string and summarize\"\n\nIf no meaningful action is needed, set proposed_next_step = \"\".\n\nassistant_message\n\nThis is the main text reply that goes back to the user.\n\nWhen the request is answerable and tools ran successfully, respond directly with the result such as a list of events, a summary of emails, or a clear confirmation that nothing was found.\n\nDo not ask \"Do you want me to check your calendar or email\" for simple read only lookups. Perform the lookup and present the results.\n\nWhen details are missing or the action is destructive or ambiguous, assistant_message should politely ask for the missing information or confirmation. This should usually match proposed_follow_up_question.\n\nDo not expose raw tool error traces.\n\npriority\n\nUse\n\n• \"high\" for urgent or time sensitive items, especially events or reminders affecting today or very soon  \n• \"normal\" for most user questions  \n• \"low\" for newsletters, promotions, or clearly non urgent content  \n\nrequires_confirmation\n\nTrue for destructive or ambiguous actions such as deleting or heavily modifying events when there is any doubt.\n\nFalse for clearly specified event creation and for read only queries.\n\nmissing_data_skip\n\nTrue only if the user explicitly says to skip, ignore, or not create or modify events.\n\nFalse otherwise.\n\n================================================\n10. COST AND TOKEN FIELDS\n\nToken usage and cost are computed by the hosting workflow, not by you.\n\nIf the input JSON contains any of the following fields:\n\ninput_tokens  \noutput_tokens  \ntotal_tokens  \nmessage_cost_usd  \nconversation_cost_usd  \nmodel  \n\nyou must copy them unchanged into the output JSON.\n\nIf they are not present in the input, do not invent values. Leave them absent or set them to null as required by the workflow, but do not guess numeric values.\n\n================================================\n11. OUTPUT CONTRACT\n\nFor every turn you must:\n\n1) Read the input JSON object  \n2) Use message_body, timestamps, and memory to infer intent  \n3) Classify domain, kind, operation, routing, and event details  \n4) Decide whether calendar and or Gmail tools are needed, call them when required, and base your reasoning on the results  \n5) Decide whether this is a follow up or a new conversation using thread_id, session_id, and time deltas  \n6) Build exactly one JSON object that  \n   a) Copies every original input field unchanged  \n   b) Adds all new fields described above at the top level  \n\nReturn only that JSON object as your final answer. Do not wrap it in markdown and do not add any explanation outside the JSON.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        112,
+        -352
+      ],
+      "id": "7b3e22fe-7d48-4369-aa69-9f97fdf36318",
+      "name": "Smart Assistant"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "Normalize Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log  Incoming Message": {
+      "main": [
+        [
+          {
+            "node": "Save Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Messages": {
+      "main": [
+        [
+          {
+            "node": "Log  Incoming Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Summary": {
+      "main": [
+        [
+          {
+            "node": "Log Summarized message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Summarized message": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Data": {
+      "main": [
+        [
+          {
+            "node": "Smart Assistant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Normalize AI Calendar Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Collect Add Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize AI Calendar Response": {
+      "main": [
+        [
+          {
+            "node": "Send message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect Add Info": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Smart Assistant",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Smart Assistant",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an event in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "Smart Assistant",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "Smart Assistant",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many messages in Gmail1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Smart Assistant",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Normalize Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Email": {
+      "main": [
+        [
+          {
+            "node": "Email Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize AI": {
+      "main": [
+        [
+          {
+            "node": "Should Notify?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Should Notify?": {
+      "main": [
+        [
+          {
+            "node": "Confirmation/Request more Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Email Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Email Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Calendar Event fom Gmail": {
+      "ai_tool": [
+        [
+          {
+            "node": "Email Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Agent": {
+      "main": [
+        [
+          {
+            "node": "Normalize AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Smart Assistant": {
+      "main": [
+        [
+          {
+            "node": "Normalize Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "aa105cf0-1afc-483c-b8a0-9c42e0ee6812",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "ePm5gM9KeEgskkNP",
+  "tags": []
+}
